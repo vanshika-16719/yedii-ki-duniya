@@ -1,59 +1,203 @@
-body{
+*{
 margin:0;
 padding:0;
-height:100vh;
-display:flex;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(to bottom,#090021,#16003d,#2b0057);
+overflow-x:hidden;
+color:white;
+min-height:100vh;
+}
+
+/* Stars */
+
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+background-image:
+radial-gradient(white 1px,transparent 1px),
+radial-gradient(white 1px,transparent 1px),
+radial-gradient(white 1px,transparent 1px);
+background-size:120px 120px;
+animation:twinkle 5s infinite alternate;
+z-index:-2;
+}
+
+@keyframes twinkle{
+from{
+opacity:.4;
+}
+to{
+opacity:1;
+}
+}
+
+/* Moon */
+
+.moon{
+position:fixed;
+top:50px;
+right:60px;
+width:120px;
+height:120px;
+border-radius:50%;
+background:#fff7d6;
+box-shadow:
+0 0 30px #fff7d6,
+0 0 60px #fff7d6,
+0 0 90px #fff7d6;
+z-index:-1;
+}
+
+/* Pages */
+
+.page{
+display:none;
+min-height:100vh;
 justify-content:center;
 align-items:center;
-background:linear-gradient(180deg,#0f0c29,#302b63,#24243e);
-font-family:Poppins,sans-serif;
-overflow:hidden;
-color:white;
+padding:30px;
 }
 
-.container{
-width:90%;
-max-width:400px;
-text-align:center;
-background:rgba(255,255,255,0.08);
-padding:25px;
-border-radius:25px;
-backdrop-filter:blur(10px);
-box-shadow:0 0 20px rgba(255,255,255,0.15);
-animation:fadeIn 2s;
+.page.active{
+display:flex;
 }
 
-h1{
-color:#ff8ad8;
-font-size:38px;
-}
+/* Cards */
 
-p{
-line-height:1.8;
-font-size:18px;
-}
-
-button{
-background:#ff66b2;
-border:none;
-padding:14px 25px;
+.card{
+width:100%;
+max-width:700px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
 border-radius:30px;
-color:white;
-font-size:16px;
-cursor:pointer;
+padding:35px;
+text-align:center;
+box-shadow:0 0 30px rgba(255,255,255,.12);
+animation:fadeUp .8s ease;
 }
 
-button:hover{
-transform:scale(1.05);
-}
-
-@keyframes fadeIn{
+@keyframes fadeUp{
 from{
 opacity:0;
-transform:translateY(40px);
+transform:translateY(30px);
 }
 to{
 opacity:1;
 transform:translateY(0);
 }
+}
+
+h1{
+font-size:3rem;
+color:#ff8ed7;
+margin-bottom:25px;
+}
+
+h2{
+color:#ffb3f1;
+margin:25px 0;
+}
+
+p{
+line-height:1.9;
+font-size:1.1rem;
+margin-bottom:20px;
+}
+
+/* Buttons */
+
+button{
+padding:14px 28px;
+border:none;
+border-radius:40px;
+background:#ff67c4;
+color:white;
+font-size:1rem;
+cursor:pointer;
+margin-top:25px;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+box-shadow:0 0 20px #ff67c4;
+}
+
+/* Reason boxes */
+
+.reason-box{
+background:rgba(255,255,255,.12);
+padding:20px;
+margin:18px 0;
+border-radius:20px;
+font-size:1.2rem;
+}
+
+.wait-text{
+font-size:1.3rem;
+margin-top:30px;
+color:#ffd6fa;
+}
+
+/* Reason cards */
+
+#reasonContainer{
+max-height:400px;
+overflow-y:auto;
+margin-top:20px;
+padding-right:8px;
+}
+
+.reason-card{
+background:rgba(255,255,255,.12);
+padding:16px;
+margin:12px 0;
+border-radius:18px;
+transition:.3s;
+}
+
+.reason-card:hover{
+transform:scale(1.03);
+}
+
+/* Final Page */
+
+.message-box{
+background:rgba(255,255,255,.12);
+padding:20px;
+margin:20px 0;
+border-radius:20px;
+line-height:1.8;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+h1{
+font-size:2rem;
+}
+
+h2{
+font-size:1.2rem;
+}
+
+.card{
+padding:22px;
+}
+
+.moon{
+width:80px;
+height:80px;
+right:20px;
+top:20px;
+}
+
 }
