@@ -2,57 +2,59 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-font-family:'Segoe UI',sans-serif;
-background:linear-gradient(to bottom,#090021,#16003d,#2b0057);
 overflow-x:hidden;
-color:white;
 min-height:100vh;
+background:linear-gradient(
+135deg,
+#ffd6ec,
+#f4ddff,
+#e7d6ff,
+#fff0f7
+);
+background-size:400% 400%;
+animation:bgMove 12s ease infinite;
 }
 
-/* Stars */
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
 
-.stars{
+/* Floating butterflies */
+
+.butterfly{
 position:fixed;
-width:100%;
-height:100%;
-top:0;
-left:0;
-background-image:
-radial-gradient(white 1px,transparent 1px),
-radial-gradient(white 1px,transparent 1px),
-radial-gradient(white 1px,transparent 1px);
-background-size:120px 120px;
-animation:twinkle 5s infinite alternate;
-z-index:-2;
+font-size:32px;
+z-index:2;
+animation:float 8s ease-in-out infinite;
 }
 
-@keyframes twinkle{
-from{
-opacity:.4;
-}
-to{
-opacity:1;
-}
+.b1{
+top:15%;
+left:10%;
 }
 
-/* Moon */
+.b2{
+top:50%;
+right:10%;
+animation-delay:2s;
+}
 
-.moon{
-position:fixed;
-top:50px;
-right:60px;
-width:120px;
-height:120px;
-border-radius:50%;
-background:#fff7d6;
-box-shadow:
-0 0 30px #fff7d6,
-0 0 60px #fff7d6,
-0 0 90px #fff7d6;
-z-index:-1;
+.b3{
+bottom:15%;
+left:20%;
+animation-delay:4s;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-25px);}
+100%{transform:translateY(0);}
 }
 
 /* Pages */
@@ -62,31 +64,18 @@ display:none;
 min-height:100vh;
 justify-content:center;
 align-items:center;
-padding:30px;
+padding:25px;
 }
 
 .page.active{
 display:flex;
+animation:fadeIn .8s ease;
 }
 
-/* Cards */
-
-.card{
-width:100%;
-max-width:700px;
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(12px);
-border-radius:30px;
-padding:35px;
-text-align:center;
-box-shadow:0 0 30px rgba(255,255,255,.12);
-animation:fadeUp .8s ease;
-}
-
-@keyframes fadeUp{
+@keyframes fadeIn{
 from{
 opacity:0;
-transform:translateY(30px);
+transform:translateY(20px);
 }
 to{
 opacity:1;
@@ -94,87 +83,104 @@ transform:translateY(0);
 }
 }
 
+/* Main card */
+
+.card{
+width:100%;
+max-width:700px;
+background:rgba(255,255,255,.45);
+backdrop-filter:blur(18px);
+padding:30px;
+border-radius:30px;
+text-align:center;
+box-shadow:0 8px 30px rgba(255,105,180,.15);
+}
+
+/* Headings */
+
 h1{
-font-size:3rem;
-color:#ff8ed7;
-margin-bottom:25px;
+font-size:2.8rem;
+color:#ff4da6;
+margin-bottom:20px;
 }
 
 h2{
-color:#ffb3f1;
-margin:25px 0;
+color:#d84fa4;
+margin:20px 0;
 }
 
 p{
-line-height:1.9;
-font-size:1.1rem;
-margin-bottom:20px;
+line-height:1.8;
+margin-bottom:15px;
+color:#444;
 }
 
 /* Buttons */
 
 button{
-padding:14px 28px;
+background:#ff73ba;
 border:none;
+padding:14px 28px;
 border-radius:40px;
-background:#ff67c4;
 color:white;
-font-size:1rem;
+font-size:16px;
 cursor:pointer;
-margin-top:25px;
+margin-top:20px;
 transition:.3s;
 }
 
 button:hover{
-transform:scale(1.08);
-box-shadow:0 0 20px #ff67c4;
+transform:scale(1.05);
+box-shadow:0 0 20px rgba(255,115,186,.5);
 }
 
-/* Reason boxes */
+/* Page 2 */
 
 .reason-box{
-background:rgba(255,255,255,.12);
-padding:20px;
-margin:18px 0;
-border-radius:20px;
+background:white;
+padding:18px;
+border-radius:18px;
+margin:15px 0;
 font-size:1.2rem;
+box-shadow:0 4px 15px rgba(255,105,180,.12);
 }
 
-.wait-text{
-font-size:1.3rem;
-margin-top:30px;
-color:#ffd6fa;
+.wait-box{
+margin-top:25px;
+font-size:1.2rem;
+color:#ff4da6;
 }
 
-/* Reason cards */
+/* Page 3 */
 
-#reasonContainer{
-max-height:400px;
+.reason-list{
+max-height:420px;
 overflow-y:auto;
-margin-top:20px;
-padding-right:8px;
+padding-right:5px;
 }
 
 .reason-card{
-background:rgba(255,255,255,.12);
-padding:16px;
-margin:12px 0;
-border-radius:18px;
+background:white;
+padding:15px;
+border-radius:15px;
+margin:10px 0;
+box-shadow:0 4px 10px rgba(255,105,180,.12);
 transition:.3s;
 }
 
 .reason-card:hover{
-transform:scale(1.03);
+transform:translateY(-3px);
 }
 
-/* Final Page */
+/* Page 4 */
 
 .message-box{
-background:rgba(255,255,255,.12);
-padding:20px;
-margin:20px 0;
-border-radius:20px;
+background:white;
+padding:18px;
+border-radius:18px;
+margin:15px 0;
 line-height:1.8;
+box-shadow:0 4px 15px rgba(255,105,180,.12);
 }
 
 /* Mobile */
@@ -185,19 +191,14 @@ h1{
 font-size:2rem;
 }
 
-h2{
-font-size:1.2rem;
-}
-
 .card{
 padding:22px;
 }
 
-.moon{
-width:80px;
-height:80px;
-right:20px;
-top:20px;
+.reason-box,
+.message-box,
+.reason-card{
+font-size:.95rem;
 }
 
 }
